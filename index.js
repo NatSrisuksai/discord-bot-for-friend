@@ -1,8 +1,21 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, REST, Routes } = require('discord.js');
-const { clientId, token } = require('./config.json');
 const dotenv = require("dotenv");
+const express = require('express');
+
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    res.send('Discord bot is running');
+});
+
+app.listen(port, () => {
+    console.log(`Web server is running on port ${port}`);
+});
+
 
 dotenv.config();
 // Create a new client instance
